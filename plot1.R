@@ -11,4 +11,6 @@ hist(data,
       col="red",main="Global Active Power",
       xlab="Global Active Power (kilowatts)")
 
-
+# Create PNG file for first plot
+dev.copy(png, file = "plot1.png") ## Copy my plot to a PNG file
+dev.off()

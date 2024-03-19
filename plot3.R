@@ -1,6 +1,6 @@
 # Program name: plot3.R
 # Author: Marvis S.
-# First Creation Date: 19-Mar-2023
+# First Creation Date: 19-Mar-2024
 # Assumption: Downloaded zip file was extracted and txt-file is in working directory
 
 data <- read.table("household_power_consumption.txt", sep=";",header=TRUE, na.strings = "?", as.is=3:9)
@@ -14,4 +14,10 @@ with(data,plot(x=Datetime,y=Sub_metering_1,ylab="Energy sub metering",xlab="",ty
 lines(x=data$Datetime,y=data$Sub_metering_1)
 lines(x=data$Datetime,y=data$Sub_metering_2,col="red")
 lines(x=data$Datetime,y=data$Sub_metering_3,col="blue")
+# for adequately placed legend get x-cooordinate
+fri_0am <- q3(data$Datetime)
 legend("topright",lty=1,legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col=c("black","red","blue"))
+
+# Create PNG file for 3rd plot
+dev.copy(png, file = "plot3.png") 
+dev.off()
